@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevOps Showcase — Sahil bhai</title>
+  <style>
+    /* CSS Variables */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220aa;
+      --glass: rgba(255,255,255,0.06);
+      --muted:#9aa4b2;
+      --accent1: #7c3aed; /* purple */
+      --accent2: #06b6d4; /* teal */
+      --glass-border: rgba(255,255,255,0.08);
+      --container:1100px;
+      --radius:14px;
+      --transition: 250ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1000px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+                  radial-gradient(900px 500px at 90% 90%, rgba(6,182,212,0.07), transparent),
+                  var(--bg);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;justify-content:center;
+    }
+
+    .wrap{width:100%;max-width:var(--container)}
+
+    /* Navbar */
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:48px;height:48px;border-radius:10px;display:grid;place-items:center;font-weight:700;
+      background: linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 6px 20px rgba(2,6,23,0.6);
+    }
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:14px}
+    nav a:hover{color: #fff;background:var(--glass);backdrop-filter: blur(6px)}
+
+    .cta{padding:9px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 30px rgba(12,10,40,0.6);cursor:pointer}
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius: var(--radius);
+      padding:36px;display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;border:1px solid var(--glass-border);
+      backdrop-filter: blur(6px);
+    }
+    .hero h1{font-size:28px;line-height:1.05;margin-bottom:10px}
+    .hero p{color:var(--muted);margin-bottom:18px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted)}
+
+    /* Preview card */
+    .preview{
+      border-radius:12px;overflow:hidden;height:260px;border:1px solid var(--glass-border);
+      display:flex;flex-direction:column;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    }
+    .preview .top{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:12px;color:#051025;font-weight:700}
+    .preview iframe{flex:1;border:0}
+
+    /* Grid */
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px;border-radius:12px;border:1px solid var(--glass-border);transition:var(--transition);cursor:default;min-height:140px;
+      display:flex;flex-direction:column;gap:10px
+    }
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    .card h3{margin-top:4px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Feature list */
+    .features{display:flex;flex-direction:column;gap:10px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .dot{width:10px;height:10px;border-radius:99px;background:linear-gradient(180deg,var(--accent1),var(--accent2));margin-top:6px}
+
+    /* Contact */
+    .contact{
+      margin-top:22px;padding:16px;border-radius:10px;border:1px dashed rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:10px
+    }
+    .row{display:flex;gap:10px}
+    input,textarea{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    button{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));cursor:pointer}
+
+    /* Footer */
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      header{gap:12px}
+      .logo{width:44px;height:44px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="font-weight:700">Sahil bhai — DevOps</div>
+          <div style="font-size:12px;color:var(--muted)">Portfolio snippet • HTML/CSS demo</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#preview">Preview</a>
+        <a href="#contact">Contact</a>
+        <div class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire me</div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Modern static page — Clean, responsive & easy to customize</h1>
+          <p>This is a compact, slightly advanced HTML/CSS template you can use for your DevOps project showcase. It's responsive, uses gradients, glassmorphism cues, and subtle animation on hover.</p>
+
+          <div class="badges">
+            <div class="badge">Responsive</div>
+            <div class="badge">Glass UI</div>
+            <div class="badge">Hover effects</div>
+            <div class="badge">No frameworks</div>
+          </div>
+
+          <div style="margin-top:18px" class="features" id="features">
+            <div class="feature"><div class="dot"></div><div><b>Customizable</b><div class="muted">Change colors, fonts, or layout in one place (CSS variables).</div></div></div>
+            <div class="feature"><div class="dot"></div><div><b>Lightweight</b><div class="muted">Pure HTML/CSS — no build step required. Great for GitHub Pages.</div></div></div>
+            <div class="feature"><div class="dot"></div><div><b>Preview-ready</b><div class="muted">Drop your screenshot into the preview area or serve real app in an iframe.</div></div></div>
+          </div>
+
+          <div class="contact" id="contact">
+            <div style="font-weight:700">Quick message</div>
+            <form onsubmit="event.preventDefault(); handleContact();">
+              <div class="row">
+                <input id="name" placeholder="Your name" required />
+                <input id="email" placeholder="Email" required />
+              </div>
+              <textarea id="msg" rows="3" placeholder="Message (what you want built)"></textarea>
+              <div style="display:flex;justify-content:flex-end"><button type="submit">Send</button></div>
+            </form>
+            <div id="sent" style="display:none;color:var(--accent2);font-weight:700">Message sent! Check console for details.</div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="preview" id="preview">
+            <div class="top">Live preview</div>
+            <!-- put a real app link or image in the iframe src to preview -->
+            <iframe srcdoc="<html><body style='display:flex;align-items:center;justify-content:center;height:100%;margin:0;background:linear-gradient(180deg,#111827,#0b1220);color:#fff;font-family:Arial'><div style='text-align:center'><h2 style='margin:0'>Hello from preview</h2><p style='opacity:.8'>Replace iframe srcdoc with your app demo or URL</p></div></body></html>"></iframe>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px">
+            <div style="flex:1" class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div class="muted">Technologies</div>
+                  <h3>HTML • CSS • Vanilla JS</h3>
+                </div>
+                <div style="font-size:18px">✨</div>
+              </div>
+              <div class="muted">Small footprint — perfect for GitHub Pages or as a frontend demo inside a Docker container.</div>
+            </div>
+
+            <div style="flex:1" class="card">
+              <div>
+                <div class="muted">Deploy</div>
+                <h3>Static hosting</h3>
+                <div class="muted">Works with GitHub Pages, Netlify, or can be served from Nginx inside Docker.</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid" style="margin-top:18px">
+        <div class="card">
+          <div class="muted">Tip</div>
+          <h3>Make it yours</h3>
+          <div class="muted">Change the <code>:root</code> variables to match your brand. Try different gradients or fonts.</div>
+        </div>
+
+        <div class="card">
+          <div class="muted">How-to</div>
+          <h3>Use with Docker</h3>
+          <div class="muted">Create a simple Dockerfile using nginx and COPY this folder to /usr/share/nginx/html — build & run.</div>
+        </div>
+
+        <div class="card">
+          <div class="muted">Advance</div>
+          <h3>Integrate CI/CD</h3>
+          <div class="muted">Add a GitHub Actions workflow to build test and deploy to GitHub Pages or an S3 bucket.</div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      Built with ❤️ by Sahil bhai — copy this file, edit, and deploy.
+    </footer>
+  </div>
+
+  <script>
+    function handleContact(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      const payload = {name,email,msg,when:new Date().toISOString()};
+      console.log('Contact payload:',payload);
+      document.getElementById('sent').style.display='block';
+      setTimeout(()=>document.getElementById('sent').style.display='none',3000);
+    }
+  </script>
+</body>
+</html>
